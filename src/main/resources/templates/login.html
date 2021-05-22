@@ -8,32 +8,33 @@
 <div th:replace="fragments/general :: login-menu-frag"/>
 
 <div class="container">
-    <form method="post" th:action="@{/login}" role="form" class="form-horizontal">
-        <div class="row">
-            <div class="col-md-4">
-            </div>
+    <form method="post" th:action="@{/login}" role="form" class="form-horizontal" style="max-width: 400px; margin: auto">
+        <br/>
+        <br/>
+        <h2>Login</h2>
 
-            <div class="col-md-4">
-                <h2 class="text-center">Login</h2>
-                <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
-                <br/>
-                <input type="password" name="password" class="form-control" placeholder="Password" required>
-                <br/>
-                <div><input type="submit" value="Sign In" class="btn btn-lg btn-primary btn-block"/></div>
-                <br/>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Username</label>
+            <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="usernameHelp">
+            <div id="usernameHelp" class="form-text">Enter ldap username.</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
 
-                <div th:if="${param.error}">
-                    <p class="text-danger text-center">Invalid username and password.</p>
-                </div>
-                <div th:if="${param.logout}">
-                    <p class="text-danger text-center">You have been logged out.</p>
-                </div>
-            </div>
+        <br/>
+        <br/>
 
-            <div class="col-md-4">
-            </div>
+        <div th:if="${param.logout}" class="alert alert-success" role="alert">
+            You have been logged out
+        </div>
+        <div th:if="${param.error}" class="alert alert-danger" role="alert">
+            Invalid username and password!
         </div>
     </form>
+
 </div>
 
 </body>
