@@ -29,7 +29,7 @@ public class Customer implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Size(max = 45)
     @Column(name = "first_name")
     private String firstName;
