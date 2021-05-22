@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/general :: include-frag"/>
+</head>
+<body>
+
+<div th:replace="fragments/general :: login-menu-frag"/>
+
+<div class="container">
+    <form method="post" th:action="@{/login}" role="form" class="form-horizontal">
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+
+            <div class="col-md-4">
+                <h2 class="text-center">Login</h2>
+                <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
+                <br/>
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
+                <br/>
+                <div><input type="submit" value="Sign In" class="btn btn-lg btn-primary btn-block"/></div>
+                <br/>
+
+                <div th:if="${param.error}">
+                    <p class="text-danger text-center">Invalid username and password.</p>
+                </div>
+                <div th:if="${param.logout}">
+                    <p class="text-danger text-center">You have been logged out.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

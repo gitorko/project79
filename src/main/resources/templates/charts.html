@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/general :: include-frag"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/charts.js"></script>
+</head>
+<body>
+
+<div th:replace="fragments/general :: menu-frag"/>
+
+<div class="container-fluid">
+    <div th:replace="fragments/general :: flash-message-frag"/>
+
+    <form method="post" th:action="@{/charts}" role="form" class="form-horizontal">
+        </br>
+        </br>
+        <div class="row">
+            <div class="col-md-1">
+                &nbsp;
+            </div>
+            <div class="col-md-4">
+                <canvas id="piechartContainer" width="200" height="300"></canvas>
+            </div>
+            <div class="col-md-1">
+                &nbsp;
+            </div>
+            <div class="col-md-4">
+                <canvas id="barchartContainer" width="200" height="300"></canvas>
+            </div>
+            <div class="col-md-1">
+                &nbsp;
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="row">
+            <div class="col-md-1">
+                &nbsp;
+            </div>
+            <div class="col-md-4">
+                <canvas id="linechartContainer" width="200" height="300"></canvas>
+            </div>
+            <div class="col-md-1">
+                &nbsp;
+            </div>
+            <div class="col-md-4">
+                <canvas id="stackchartContainer" width="200" height="300"></canvas>
+            </div>
+            <div class="col-md-1">
+                &nbsp;
+            </div>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>

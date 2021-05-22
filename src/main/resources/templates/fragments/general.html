@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:fragment="include-frag" th:remove="tag">
+    <title>Project 79</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="images/demo.ico" type="image/x-icon"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div th:fragment="login-menu-frag">
+    <!--Login Menu Bar-->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><img src="images/demo.png" width="40" height="40"/></a>
+        </div>
+    </nav>
+</div>
+
+<div th:fragment="menu-frag">
+    <!--Menu Bar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><img src="images/demo.png" width="40" height="40"/></a>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/charts">Charts</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Blank
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="nav-link dropdown-item" href="#">Blank 1</a></li>
+                            <li><a class="nav-link dropdown-item" href="#">Blank 2</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-link dropdown" href="#" th:if="${#httpServletRequest.remoteUser != null}">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarUserLink"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="glyphicon glyphicon-user"></span>&nbsp;[[${#httpServletRequest.remoteUser}]]&nbsp;<i class="bi bi-person"></i>&nbsp;
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarUserLogoutLink">
+                            <li>
+                                <a class="dropdown-item" th:href="@{/logout}">Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li th:if="${#httpServletRequest.remoteUser == null}"><a class="nav-link" href="/login">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</div>
+
+<div th:fragment="flash-message-frag">
+    <!--Flash Message-->
+    <div class="row">
+        <div class="col-md-12">
+            <div th:if="${successMsg}">
+                <p class="text-success text-center" th:inline="text">[[${successMsg}]]</p>
+            </div>
+            <div th:if="${failMsg}">
+                <p class="text-danger text-center" th:inline="text">[[${failMsg}]]</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+
