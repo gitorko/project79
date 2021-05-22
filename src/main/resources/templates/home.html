@@ -8,63 +8,59 @@
 
 <div th:replace="fragments/general :: menu-frag"/>
 
-<div class="container-fluid">
+<div class="container">
     <div th:replace="fragments/general :: flash-message-frag"/>
 
     <form method="post" th:action="@{/}" role="form" class="form-horizontal">
         <div class="row">
-            <div class="col-md-12 text-center">
-                <h2 th:inline="text">Current Date : [[${serverTime}]]</h2>
+            <div class="col text-center">
+                <p class="text-end" th:inline="text">Current Date : [[${serverTime}]]</p>
             </div>
         </div>
-        </br>
+        <br/>
 
         <div class="row">
-            <div class="col-md-2">
-                &nbsp;
+            <div class="col text-center">
+                <h2>Customers</h2>
             </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label class="col-md-2 control-label">First Name</label>
-                    <div class="col-md-10">
-                        <input type="text" name="firstName" class="form-control" placeholder="Enter First Name">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-2 control-label">Last Name</label>
-                    <div class="col-md-10">
-                        <input type="text" name="lastName" class="form-control" placeholder="Enter Last Name">
-                    </div>
-                </div>
+        </div>
+        <br/>
 
-                <div class="row">
-                    <div class="col-md-2">
-
+        <div class="row">
+            <div class="col-4">
+                <form>
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input type="text" name="firstName" class="form-control" id="firstName" aria-describedby="nameHelp">
+                        <div id="nameHelp" class="form-text">Enter your name!</div>
                     </div>
-                    <div class="col-md-10">
-                        <input type="submit" name="action" value="Submit" class="btn btn-primary btn-lg btn-block"/>
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input type="text" name="lastName" class="form-control" id="lastName">
                     </div>
-                </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
             </div>
+            <div class="col-8">
+                <table id="customer-table" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                First Name
+                            </th>
+                            <th>
+                                Last Name
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="customer: ${customerLst}">
+                            <td th:inline="text">[[${customer.firstName}]]</td>
+                            <td th:inline="text">[[${customer.lastName}]]</td>
+                        </tr>
+                    </tbody>
 
-            <div class="col-md-5">
-                <table class="table table-striped table-bordered" width="100%" cellspacing="0">
-                    <tr>
-                        <th>
-                            First Name
-                        </th>
-                        <th>
-                            Last Name
-                        </th>
-                    </tr>
-                    <tr th:each="customer: ${customerLst}">
-                        <td th:inline="text">[[${customer.firstName}]]</td>
-                        <td th:inline="text">[[${customer.lastName}]]</td>
-                    </tr>
                 </table>
-            </div>
-            <div class="col-md-2">
-                &nbsp;
             </div>
         </div>
 

@@ -9,50 +9,28 @@
 
 <div th:replace="fragments/general :: menu-frag"/>
 
-<div class="container-fluid">
+<div class="container">
     <div th:replace="fragments/general :: flash-message-frag"/>
-
-    <form method="post" th:action="@{/charts}" role="form" class="form-horizontal">
-        </br>
-        </br>
-        <div class="row">
-            <div class="col-md-1">
-                &nbsp;
-            </div>
-            <div class="col-md-4">
-                <canvas id="piechartContainer" width="200" height="300"></canvas>
-            </div>
-            <div class="col-md-1">
-                &nbsp;
-            </div>
-            <div class="col-md-4">
-                <canvas id="barchartContainer" width="200" height="300"></canvas>
-            </div>
-            <div class="col-md-1">
-                &nbsp;
-            </div>
+    <br/>
+    <br/>
+    <div class="row">
+        <div class="col">
+            <canvas id="piechartContainer" width="200" height="300"></canvas>
         </div>
-        <br/>
-        <br/>
-        <div class="row">
-            <div class="col-md-1">
-                &nbsp;
-            </div>
-            <div class="col-md-4">
-                <canvas id="linechartContainer" width="200" height="300"></canvas>
-            </div>
-            <div class="col-md-1">
-                &nbsp;
-            </div>
-            <div class="col-md-4">
-                <canvas id="stackchartContainer" width="200" height="300"></canvas>
-            </div>
-            <div class="col-md-1">
-                &nbsp;
-            </div>
+        <div class="col">
+            <canvas id="barchartContainer" width="200" height="300"></canvas>
         </div>
-
-    </form>
+    </div>
+    <br/>
+    <br/>
+    <div class="row">
+        <div class="col">
+            <canvas id="linechartContainer" width="200" height="300"></canvas>
+        </div>
+        <div class="col">
+            <canvas id="stackchartContainer" width="200" height="300"></canvas>
+        </div>
+    </div>
 </div>
 
 </body>
