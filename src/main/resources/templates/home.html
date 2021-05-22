@@ -11,7 +11,7 @@
 <div class="container">
     <div th:replace="fragments/general :: flash-message-frag"/>
 
-    <form method="post" th:action="@{/}" role="form" class="form-horizontal">
+    <form method="post" th:action="@{/save}" role="form" class="form-horizontal">
         <div class="row">
             <div class="col text-center">
                 <p class="text-end" th:inline="text">Current Date : [[${serverTime}]]</p>

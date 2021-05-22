@@ -24,15 +24,14 @@ public class HomeController {
     CustomerRepository customerRepo;
 
     @GetMapping(value = "/")
-    public String customerHome(Model model) {
-
+    public String home(Model model) {
         Iterable<Customer> customerLst = customerRepo.findAll();
         model.addAttribute("customerLst", customerLst);
         model.addAttribute("serverTime", new Date());
         return "home";
     }
 
-    @PostMapping(value = "/")
+    @PostMapping(value = "/save")
     public String customerSave(@RequestParam(value = "firstName") String firstName, @RequestParam(value = "lastName") String lastName,
                                Model model, RedirectAttributes redirAttrs, Principal principal) {
         log.info("Name: " + firstName);
