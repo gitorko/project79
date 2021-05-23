@@ -20,15 +20,6 @@ $(function() {
         'rgb(201, 203, 207)'
     ];
 
-    function getRandomColor() {
-        var letters = '0123456789ABCDEF'.split('');
-        var color = '#';
-        for (var i = 0; i < 6; i++ ) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    }
-
     $.getJSON("/rest/pie-data", function(json) {
         new Chart(document.getElementById("piechartContainer"), {
             type: 'pie',
