@@ -11,6 +11,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    public static final String USER_ROLE = "ADMIN";
+    public static final String USER_NAME = "admin";
+    public static final String USER_PASSWORD = "admin@123";
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -32,12 +37,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         auth.inMemoryAuthentication()
-                .withUser("user")
-                .password(encoder.encode("password"))
-                .roles("USER")
-                .and()
-                .withUser("admin")
-                .password(encoder.encode("admin"))
-                .roles("USER", "ADMIN");
+                .withUser(USER_NAME)
+                .password(encoder.encode(USER_PASSWORD))
+                .roles(USER_ROLE);
     }
 }
