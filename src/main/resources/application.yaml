@@ -4,12 +4,13 @@ server:
 
 spring:
   datasource:
-    driver-class-name: org.hsqldb.jdbc.JDBCDriver
-    url: jdbc:hsqldb:hsql://localhost/mydb
-    username: SA
-    password:
+    driver-class-name: org.postgresql.Driver
+    host: localhost
+    url: jdbc:postgresql://${spring.datasource.host}:5432/test-db
+    username: test
+    password: test@123
   jpa:
     show-sql: false
-    hibernate.ddl-auto: update
+    hibernate.ddl-auto: create-drop
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
-    database-platform: org.hibernate.dialect.HSQLDialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
